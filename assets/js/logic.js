@@ -36,31 +36,48 @@ start.addEventListener('click', beginQuiz);
 
 // * Questions and answers
 
-
 var questions = document.getElementById('questions');
 var questionText = document.getElementById('question-title');
-var answerOptions = document.querySelector(".choices");
+var answerOptions = document.getElementById('choices');
 var answerMessage = document.getElementById('answer-message');
 var answerAudio;
+var userSelection;
 
-// TODO Continue to set up formatting for questions and answer choices (as buttons).
+var optionA = document.createElement("button");
+answerOptions.appendChild(optionA);
+optionA.textContent = (answerOptionsArray [0][1]);
+
+var optionB = document.createElement("button");
+answerOptions.appendChild(optionB);
+optionB.textContent = (answerOptionsArray [0][2]);
+
+var optionC = document.createElement("button");
+answerOptions.appendChild(optionC);
+optionC.textContent = (answerOptionsArray [0][3]);
+
+var optionD = document.createElement("button");
+answerOptions.appendChild(optionD);
+optionD.textContent = (answerOptionsArray [0][4]);
+
+
+
+// TODO Check how to best code user selection - refactor the code from here down.
+
+if(userSelection === "A") {
+    console.log("Option A selected");
+} else if(userSelection === "B") {
+    console.log("Option B selected");
+} else if(userSelection === "C") {
+    console.log("Option C selected");
+} else if(userSelection === "D") {
+    console.log("Option D selected");
+}
 
 function displayQuestions () {
     document.getElementById('start-screen').classList.add("hide");
     document.getElementById('questions').classList.remove("hide");
-    // console.log("Display first question and answer options");
-    // document.createElement('questionText'),
-    // document.createElement('answerOptions');
 
-
-    questionText.textContent = "Example question - once working, reference questionsArray";
-    document.getElementById('questions').classList.add("button");
-    questionText.setAttribute("style", "background-color: pink;");
-    
-    answerOptions.textContent = "Example answer choices - once working, reference answerOptionsArray";
-    // answerOptions.setAttribute("style", "background-color: green;");
-
-// TODO Work out how best to display questions and answer options using the mock-up provided.
+    questionText.textContent = questionsArray [0][1];
 
     // If statement here to check userAnswer against correctAnswer and trigger the next action accordingly.
     if(!userAnswer) {
