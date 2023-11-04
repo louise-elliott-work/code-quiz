@@ -11,11 +11,11 @@ var questionsArray = [
 
 // Array of answers here to facilitate references and extension. Add text at the end.
 var answerOptionsArray = [
-    [1, ["A", "option A text here"], ["B", "option B text here"], ["C", "option C text here"], ["D", "option D text here"]],
-    [2, ["A", "option A text here"], ["B", "option B text here"], ["C", "option C text here"], ["D", "option D text here"]],
-    [3, ["A", "option A text here"], ["B", "option B text here"], ["C", "option C text here"], ["D", "option D text here"]],
-    [4, ["A", "option A text here"], ["B", "option B text here"], ["C", "option C text here"], ["D", "option D text here"]],
-    [5, ["A", "option A text here"], ["B", "option B text here"], ["C", "option C text here"], ["D", "option D text here"]],
+    [1, ["option A text here"], ["option B text here"], ["option C text here"], ["option D text here"]],
+    [2, ["option A text here"], ["option B text here"], ["option C text here"], ["option D text here"]],
+    [3, ["option A text here"], ["option B text here"], ["option C text here"], ["option D text here"]],
+    [4, ["option A text here"], ["option B text here"], ["option C text here"], ["option D text here"]],
+    [5, ["option A text here"], ["option B text here"], ["option C text here"], ["option D text here"]],
 ]
 
 // Array of correct answers here reference in if statement below.
