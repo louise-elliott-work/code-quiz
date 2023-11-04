@@ -10,13 +10,12 @@
 
 // * Timer
 
-var start = document.getElementById('start'); // Call start element in HTML code.
-var time = document.getElementById('time'); // Call timer element in HTML code.
+var start = document.getElementById('start');
+var time = document.getElementById('time');
 var timerCount = 75;
 var timer;
 
 function beginQuiz () {
-    console.log("Display first question and answer options");
     startTimer()
     displayQuestions()
 }
@@ -37,14 +36,29 @@ start.addEventListener('click', beginQuiz);
 
 // * Questions and answers
 
+
+var questions = document.getElementById('questions');
 var questionText = document.getElementById('question-title');
-var answerOptions = document.getElementById('options');
-var answerOption1 = document.getElementById('option1');
-var answerOption2 = document.getElementById('option2');
-var answerOption3 = document.getElementById('option3');
-var answerOption4 = document.getElementById('option4');
+var answerOptions = document.querySelector(".choices");
+var answerMessage = document.getElementById('answer-message');
+var answerAudio;
+
+// TODO Continue to set up formatting for questions and answer choices (as buttons).
 
 function displayQuestions () {
+    document.getElementById('start-screen').classList.add("hide");
+    document.getElementById('questions').classList.remove("hide");
+    // console.log("Display first question and answer options");
+    // document.createElement('questionText'),
+    // document.createElement('answerOptions');
+
+
+    questionText.textContent = "Example question - once working, reference questionsArray";
+    document.getElementById('questions').classList.add("button");
+    questionText.setAttribute("style", "background-color: pink;");
+    
+    answerOptions.textContent = "Example answer choices - once working, reference answerOptionsArray";
+    // answerOptions.setAttribute("style", "background-color: green;");
 
 // TODO Work out how best to display questions and answer options using the mock-up provided.
 
@@ -53,11 +67,15 @@ function displayQuestions () {
         console.log("Waiting for user to answer");
     }
     else if (userAnswer === correctAnswer) {
-        console.log("Correct answer given - display congratulations message and play sound");
+        console.log("Correct answer given - display message and play sound");
+        answerMessage = "Correct!";
+        answerAudio.play(assets/sfx/correct.wav)
     }
     else {
-        console.log("Incorrect answer given - display explanation and motivational message or image");
-        // Add here reduction of time remaining.
+        console.log("Incorrect answer given - reduce time by 10 seconds, display message or image");
+        timerCount = -10;
+        answerMessage = "Incorrect!";
+        answerAudio.play(assets/sfx/incorrect.wav)
     }
 
 }
