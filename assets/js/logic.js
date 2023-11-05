@@ -17,7 +17,7 @@ var timer;
 
 function beginQuiz () {
     startTimer()
-    displayQuestions()
+    answerQuestions()
 }
 
 function startTimer () {
@@ -39,62 +39,68 @@ start.addEventListener('click', beginQuiz);
 var questions = document.getElementById('questions');
 var questionText = document.getElementById('question-title');
 var answerOptions = document.getElementById('choices');
-var answerMessage = document.getElementById('answer-message');
+var answerMessage = document.getElementById('feedback');
 var answerAudio;
-var userSelection;
+var userAnswer;
 
 var optionA = document.createElement("button");
+optionA.setAttribute("id", "A");
 answerOptions.appendChild(optionA);
 optionA.textContent = (answerOptionsArray [0][1]);
 
 var optionB = document.createElement("button");
+optionB.setAttribute("id", "B");
 answerOptions.appendChild(optionB);
 optionB.textContent = (answerOptionsArray [0][2]);
 
 var optionC = document.createElement("button");
+optionC.setAttribute("id", "C");
 answerOptions.appendChild(optionC);
 optionC.textContent = (answerOptionsArray [0][3]);
 
 var optionD = document.createElement("button");
+optionD.setAttribute("id", "D");
 answerOptions.appendChild(optionD);
 optionD.textContent = (answerOptionsArray [0][4]);
 
+// TODO for loop to loop through questions
 
-
-// TODO Check how to best code user selection - refactor the code from here down.
-
-if(userSelection === "A") {
-    console.log("Option A selected");
-} else if(userSelection === "B") {
-    console.log("Option B selected");
-} else if(userSelection === "C") {
-    console.log("Option C selected");
-} else if(userSelection === "D") {
-    console.log("Option D selected");
-}
-
-function displayQuestions () {
+function answerQuestions () {
     document.getElementById('start-screen').classList.add("hide");
     document.getElementById('questions').classList.remove("hide");
 
-    questionText.textContent = questionsArray [0][1];
+    // ! For tests only - once answer check is working and looping through the array length, reference answerOptionsArray for actual correct answers.
+    correctAnswer = "B";
+    console.log("Correct answer for tests = " + correctAnswer);
+    console.log("Number of questions for tests = " + questionsArray.length);
 
-    // If statement here to check userAnswer against correctAnswer and trigger the next action accordingly.
-    if(!userAnswer) {
-        console.log("Waiting for user to answer");
-    }
-    else if (userAnswer === correctAnswer) {
-        console.log("Correct answer given - display message and play sound");
-        answerMessage = "Correct!";
-        answerAudio.play(assets/sfx/correct.wav)
-    }
-    else {
-        console.log("Incorrect answer given - reduce time by 10 seconds, display message or image");
-        timerCount = -10;
-        answerMessage = "Incorrect!";
-        answerAudio.play(assets/sfx/incorrect.wav)
-    }
+    for (var i = 0; i < questionsArray.length; i++) {
 
+        questionText.textContent = questionsArray [i][1];
+        console.log("i = " + i);
+
+        document.querySelectorAll("button").forEach(function(buttonSelection) {
+            buttonSelection.addEventListener('click', function() {
+            userAnswer = this.getAttribute("id");
+
+            // If statement here to check userAnswer against correctAnswer and trigger the next action accordingly.
+
+            if(!userAnswer) {}
+                else if (userAnswer === correctAnswer) {
+                    answerMessage.textContent = "Correct!";
+                    answerMessage.classList.remove("hide");
+                    return;
+                    // TODO check how to play audio. answerAudio.play(assets/sfx/correct.wav)
+                }
+                else {
+                    timerCount = timerCount-10;
+                    answerMessage.textContent = "Incorrect!";
+                    answerMessage.classList.remove("hide");
+                    return;
+                    // TODO check how to play audio. answerAudio.play(assets/sfx/incorrect.wav)
+                }
+            })
+        })
+        return;
+    }
 }
-
-
