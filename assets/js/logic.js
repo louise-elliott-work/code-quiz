@@ -67,10 +67,10 @@ function runQuiz () {
 
         // * Capture user answer
 
-        choices.addEventListener('click', function() {
-            userAnswer = this.getAttribute("id");
-            checkAnswer()
-            })
+        choices.addEventListener('click', function(event) {
+            userAnswer = event.target.id;
+            checkAnswer();
+        });
 
         // * Check user answer against correct answer question
             function checkAnswer() {
