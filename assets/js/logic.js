@@ -47,12 +47,17 @@ function startTimer () {
 }
 
 function runQuiz () {
-    
-    // * Hide start screen
-    document.getElementById('start-screen').classList.add("hide");
 
+    var i = 0;
+
+    function displayQuestion() {
+
+    // * Hide start screen and previous question (if applicable)
+    document.getElementById('start-screen').classList.add("hide");
+    document.getElementById('questions').classList.add("hide");
+    
     // * Loop to go through questions
-    for (var i = 0; i < questionsArray.length; i++) {
+    if (i < questionsArray.length) {
 
         // * Display question text and answer options
         document.getElementById('questions').classList.remove("hide");
@@ -65,22 +70,31 @@ function runQuiz () {
         optionD.textContent = (answerOptionsArray [i][4]);
         correctAnswer = (correctAnswersArray [i][1]);
 
+        // * Reset user answer to null
+        return userAnswer = null;
+
         // * Capture user answer
 
-        choices.addEventListener('click', function(event) {
-            userAnswer = event.target.id;
-            checkAnswer();
-        });
+    }
+    else {
+        // No more questions, move to scoreboard section
+        // TODO: Handle end of quiz logic
+    }
+    }
 
-        // * Check user answer against correct answer question
-            function checkAnswer() {
-        
-                // ! For tests only - once answer check is working and looping through the array length, reference answerOptionsArray for actual correct answers.
-                console.log("Number of questions for tests = " + questionsArray.length);
-                console.log("i = " + i);console.log(typeof(userAnswer));
-                console.log("userAnswer = " + userAnswer); 
-                console.log(typeof(correctAnswer));
-                console.log("correctAnswer = " + correctAnswer); 
+    function getAnswer() {
+        choices.addEventListener('click', function() {
+            userAnswer = this.getAttribute("id");
+            checkAnswer();
+            i++;
+            displayQuestion()
+        });
+    }
+    
+    getAnswer();
+
+    // * Check user answer against correct answer question
+    function checkAnswer() {
 
         if (userAnswer === correctAnswer) {
             answerMessage.textContent = "Correct!";
@@ -93,7 +107,12 @@ function runQuiz () {
             answerMessage.classList.remove("hide");
             // TODO check how to play audio. answerAudio.play(assets/sfx/incorrect.wav)
         }
-    }
 
     }
-}
+
+    // Start quiz by displaying the first question.
+    displayQuestion()
+    
+    }
+
+

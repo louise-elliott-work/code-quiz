@@ -16,7 +16,7 @@ var answerOptionsArray = [
     [3, ["option A text here"], ["option B text here"], ["option C text here"], ["option D text here"]],
     [4, ["option A text here"], ["option B text here"], ["option C text here"], ["option D text here"]],
     [5, ["option A text here"], ["option B text here"], ["option C text here"], ["option D text here"]],
-]
+];
 
 // Array of correct answers here reference in if statement below.
 var correctAnswersArray = [
@@ -26,11 +26,3 @@ var correctAnswersArray = [
     [4, "A"],
     [5, "C"],
 ];
-
-// userAnswer variable. This needs to store the value of the input by the user and it needs to change update for each new question.
-// TODO Add in how to capture this from user input.
-var userAnswer;
-
-// correctAnswer variable. This needs to reference the correctAnswersArray to capture the correct answer for the specified question.
-// TODO Work out how best to reference this from the correctAnswersArray according to the question number.
-var correctAnswer;
