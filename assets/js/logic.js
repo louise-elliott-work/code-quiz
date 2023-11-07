@@ -33,6 +33,8 @@ var optionD = document.getElementById("D");
 
 var userAnswer = "";
 
+var userScore = 0;
+
 // * Start timer and start quiz
 function startTimer () {
     timer = setInterval (function() {
@@ -40,6 +42,7 @@ function startTimer () {
         timerCount--;
         if(timerCount < 0) {
             clearInterval(timer);
+            endQuiz();
             // TODO #end-screen (message display score and give user ability to save initials and score)
         }
     }, 1000);
@@ -73,18 +76,18 @@ function runQuiz () {
         // * Reset user answer to null
         return userAnswer = null;
 
-        // * Capture user answer
+
 
     }
     else {
-        // No more questions, move to scoreboard section
-        // TODO: Handle end of quiz logic
+        endQuiz();
     }
     }
 
+    // * Capture user answer
     function getAnswer() {
-        choices.addEventListener('click', function() {
-            userAnswer = this.getAttribute("id");
+        choices.addEventListener('click', function(event) {
+            userAnswer = event.target.id;
             checkAnswer();
             i++;
             displayQuestion()
@@ -96,18 +99,25 @@ function runQuiz () {
     // * Check user answer against correct answer question
     function checkAnswer() {
 
+        console.log("userAnswer = " + userAnswer);
+        console.log("correctAnswer = " + correctAnswer);
+
         if (userAnswer === correctAnswer) {
             answerMessage.textContent = "Correct!";
+            // TODO change this so the answerMessage only persists for three seconds maximum with a setTimeout function
             answerMessage.classList.remove("hide");
             // TODO check how to play audio. answerAudio.play(assets/sfx/correct.wav)
+            userScore = userScore+1;
         }
         else {
             timerCount = timerCount-10;
             answerMessage.textContent = "Incorrect!";
+            // TODO change this so the answerMessage only persists for three seconds maximum with a setTimeout function
             answerMessage.classList.remove("hide");
             // TODO check how to play audio. answerAudio.play(assets/sfx/incorrect.wav)
         }
 
+        console.log("userScore = "+ userScore);
     }
 
     // Start quiz by displaying the first question.
@@ -115,4 +125,8 @@ function runQuiz () {
     
     }
 
+    function endQuiz() {
+        var endScreen = document.getElementById('end-screen');
+        endScreen.classList.remove("hide");
+    }
 
