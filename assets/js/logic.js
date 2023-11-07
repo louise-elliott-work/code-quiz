@@ -20,10 +20,18 @@ var timer;
 
 var questions = document.getElementById('questions');
 var questionText = document.getElementById('question-title');
-var userAnswer;
+
 var answerMessage = document.getElementById('feedback');
 var answerAudio;
 
+var answerOptions = document.getElementsByClassName("button");
+
+var optionA = document.getElementById("A");
+var optionB = document.getElementById("B");
+var optionC = document.getElementById("C");
+var optionD = document.getElementById("D");
+
+var userAnswer = "";
 
 // * Start timer and start quiz
 function startTimer () {
@@ -46,76 +54,46 @@ function runQuiz () {
     // * Loop to go through questions
     for (var i = 0; i < questionsArray.length; i++) {
 
-        var answerOptions = document.getElementById('choices');
+        // * Display question text and answer options
+        document.getElementById('questions').classList.remove("hide");
 
-        var optionA = document.createElement("button");
-        optionA.setAttribute("id", "A");
-        answerOptions.appendChild(optionA);
-        
-        var optionB = document.createElement("button");
-        optionB.setAttribute("id", "B");
-        answerOptions.appendChild(optionB);
-        
-        var optionC = document.createElement("button");
-        optionC.setAttribute("id", "C");
-        answerOptions.appendChild(optionC);
-        
-        var optionD = document.createElement("button");
-        optionD.setAttribute("id", "D");
-        answerOptions.appendChild(optionD);
-
-        // * Target question
+        // * Target question text and answer options
         questionText.textContent = questionsArray[i][1];
         optionA.textContent = (answerOptionsArray [i][1]);
         optionB.textContent = (answerOptionsArray [i][2]);
         optionC.textContent = (answerOptionsArray [i][3]);
         optionD.textContent = (answerOptionsArray [i][4]);
-    
-            // ! For tests only - once answer check is working and looping through the array length, reference answerOptionsArray for actual correct answers.
-            console.log("Number of questions for tests = " + questionsArray.length);
-            console.log("i = " + i);
-        
-        // * Display question:
-        document.getElementById('questions').classList.remove("hide");
+        correctAnswer = (correctAnswersArray [i][1]);
 
-        // * Check user answer against correct answer question:
-        document.querySelectorAll("button").forEach(function(buttonSelection) {
-            buttonSelection.addEventListener('click', function() {
+        // * Capture user answer
+
+        choices.addEventListener('click', function() {
             userAnswer = this.getAttribute("id");
-                
-                // ! For tests only - once answer check is working and looping through the array length, reference answerOptionsArray for actual correct answers.
-                correctAnswer = "B";
-                console.log("Correct answer for tests = " + correctAnswer);
-                console.log("userAnswer = " + userAnswer);
-
-            if (!userAnswer) {console.log("awaiting answer");}
-            else if (userAnswer === correctAnswer) {
-                answerMessage.textContent = "Correct!";
-                answerMessage.classList.remove("hide");
-                document.getElementById('questions').classList.add("hide");
-                // TODO check how to play audio. answerAudio.play(assets/sfx/correct.wav)
-                // * Hide question:
-                document.getElementById('questions').classList.add("hide");
-            }
-            else {
-                timerCount = timerCount-10;
-                answerMessage.textContent = "Incorrect!";
-                answerMessage.classList.remove("hide");
-                document.getElementById('questions').classList.add("hide");
-                // TODO check how to play audio. answerAudio.play(assets/sfx/incorrect.wav)
-                // * Hide question:
-                document.getElementById('questions').classList.add("hide");
-            }
+            checkAnswer()
             })
-        
-        })
 
-    return;
+        // * Check user answer against correct answer question
+            function checkAnswer() {
+        
+                // ! For tests only - once answer check is working and looping through the array length, reference answerOptionsArray for actual correct answers.
+                console.log("Number of questions for tests = " + questionsArray.length);
+                console.log("i = " + i);console.log(typeof(userAnswer));
+                console.log("userAnswer = " + userAnswer); 
+                console.log(typeof(correctAnswer));
+                console.log("correctAnswer = " + correctAnswer); 
+
+        if (userAnswer === correctAnswer) {
+            answerMessage.textContent = "Correct!";
+            answerMessage.classList.remove("hide");
+            // TODO check how to play audio. answerAudio.play(assets/sfx/correct.wav)
+        }
+        else {
+            timerCount = timerCount-10;
+            answerMessage.textContent = "Incorrect!";
+            answerMessage.classList.remove("hide");
+            // TODO check how to play audio. answerAudio.play(assets/sfx/incorrect.wav)
+        }
     }
 
+    }
 }
-
-
-
-
-
