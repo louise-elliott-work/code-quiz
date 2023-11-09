@@ -120,5 +120,7 @@ function runQuiz () {
         endScreen.classList.remove("hide");
         var finalScore = document.getElementById('final-score')
         finalScore.textContent = userScore;
+        var userInitials = "";
+        userInitials = document.getElementById("initials");
     }
 
