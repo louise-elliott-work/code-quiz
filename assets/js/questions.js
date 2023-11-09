@@ -1,4 +1,4 @@
-// Separate js file for questions to facilitate changes and additions.
+// * Separate js file for questions to facilitate changes and additions.
 
 // Array of questions here to facilitate references and extension. Add text at the end.
 var questionsArray = [

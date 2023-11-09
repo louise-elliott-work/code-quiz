@@ -94,7 +94,6 @@ function runQuiz () {
 
         if (userAnswer === correctAnswer) {
             answerMessage.textContent = "Correct!";
-            // TODO change this so the answerMessage only persists for three seconds maximum with a setTimeout function
             answerMessage.classList.remove("hide");
             // TODO check how to play audio. answerAudio.play(assets/sfx/correct.wav)
             userScore = userScore+1;
@@ -102,7 +101,6 @@ function runQuiz () {
         else {
             timerCount = timerCount-10;
             answerMessage.textContent = "Incorrect!";
-            // TODO change this so the answerMessage only persists for three seconds maximum with a setTimeout function
             answerMessage.classList.remove("hide");
             // TODO check how to play audio. answerAudio.play(assets/sfx/incorrect.wav)
         }
@@ -113,14 +111,20 @@ function runQuiz () {
     // Start quiz by displaying the first question.
     displayQuestion()
     
-    }
+}
 
-    function endQuiz() {
-        var endScreen = document.getElementById('end-screen');
-        endScreen.classList.remove("hide");
-        var finalScore = document.getElementById('final-score')
-        finalScore.textContent = userScore;
-        var userInitials = "";
-        userInitials = document.getElementById("initials");
-    }
+function endQuiz() {
+    var endScreen = document.getElementById('end-screen');
+    endScreen.classList.remove("hide");
+    var finalScore = document.getElementById('final-score')
+    finalScore.textContent = userScore;
+    localStorage.setItem("userScore", userScore);
+}
 
+// On clicking submit, store the user initials and final score.
+var submit = document.getElementById('submit');
+submit.addEventListener('click', saveUserEntry);
+function saveUserEntry () {
+    var userInitials = document.getElementById("initials");
+    localStorage.setItem("userInitials", userInitials);
+}
