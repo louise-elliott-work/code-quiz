@@ -132,5 +132,4 @@ function saveUserEntry () {;
     var scoresArray = JSON.parse(localStorage.getItem("scoresArray")) || [];
     scoresArray.push(userEntry);
     localStorage.setItem("userEntry", JSON.stringify(scoresArray));
-    scoresArray = JSON.parse(localStorage.getItem("scoresArray"));
 }
