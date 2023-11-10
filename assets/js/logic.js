@@ -118,13 +118,19 @@ function endQuiz() {
     endScreen.classList.remove("hide");
     var finalScore = document.getElementById('final-score')
     finalScore.textContent = userScore;
-    localStorage.setItem("userScore", userScore);
 }
 
-// On clicking submit, store the user initials and final score.
+// On clicking submit, store the user initials and final score in Local Storage.
 var submit = document.getElementById('submit');
 submit.addEventListener('click', saveUserEntry);
-function saveUserEntry () {
-    var userInitials = document.getElementById("initials");
-    localStorage.setItem("userInitials", userInitials);
+function saveUserEntry () {;
+    var userInitials = document.getElementById("initials")
+    var userEntry = {
+        userInitials: userInitials,
+        userScore: userScore
+    };
+    var scoresArray = JSON.parse(localStorage.getItem("scoresArray")) || [];
+    scoresArray.push(userEntry);
+    localStorage.setItem("userEntry", JSON.stringify(scoresArray));
+    scoresArray = JSON.parse(localStorage.getItem("scoresArray"));
 }

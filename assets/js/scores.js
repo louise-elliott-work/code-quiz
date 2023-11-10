@@ -1,28 +1,15 @@
 // * Separate js file for scores to be saved in local storage.
 
-// Add to local storage the user's initials and final score.
-localStorage.getItem("userInitials");
-localStorage.getItem("userScore");
-
-console.log(userInitials);
-console.log(userScore);
-
-// Store the user's initials and final score in an array of objects.
-// ! examples below only
-var scoresArray = [
-    ("LE", "7"),
-    ("PE", "1"),
-    ("NE", "2")
-]
-console.log(scoresArray);
-
-// Add new entry into the scoresArray.
-var userEntry = userInitials.concat(userScore);
+// Store users' initials and final scores as arrays of objects.
+console.log("user initials = " + userInitials);
+console.log("user score = " + userScore);
+console.log("type of scoresArray = " + typeof(scoresArray));
+console.log("scoresArray = " + scoresArray);
 
 // Add these two values to the ol #highscores, with the highest finalScore always showing at the top.
 var ol = document.querySelector("#highscores");
 var li = document.createElement('li');
-var text = document.createTextNode(userEntry);
+var text = document.createTextNode(scoresArray);
 li.appendChild(text);
 ol.appendChild(li);
 
