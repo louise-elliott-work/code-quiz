@@ -12,7 +12,13 @@ scoresArray.push(userEntry);
 // Format scores array.
 var scoresArrayString = JSON.stringify(scoresArray);
 const scoresArrayStringParsed = JSON.parse(scoresArrayString);
-var allStoredScores = scoresArrayStringParsed[0];
+var allStoredScores = scoresArrayStringParsed[0]
+console.log(allStoredScores);
+
+// ! Work out how to sort scores in ascending order - tricky with numbers but it's not even doing it alphabetically either at the moment.
+allStoredScoresDescending = allStoredScores.sort(function(a, b){return b-a});
+console.log(allStoredScoresDescending);
+
 
 // * Function to run through scores array and display items as list elements in an ordered list.
 
@@ -31,4 +37,5 @@ var clear = document.getElementById('clear');
 clear.addEventListener('click', clearScores);
 function clearScores () {
     localStorage.clear();
+    scoresTable.classList.add("hide");
 }
