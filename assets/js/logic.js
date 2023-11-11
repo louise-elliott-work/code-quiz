@@ -131,6 +131,8 @@ function saveUserEntry () {;
         userInitials: userInitials,
         userScore: userScore
     };
-    // Add new user entry to local storage.
-    localStorage.setItem("userEntry", JSON.stringify(userEntry));
+    let temp = JSON.parse(localStorage.getItem("userEntry")) || [];
+    temp.push(userEntry);
+        // Add new user entry to local storage.
+        localStorage.setItem("userEntry", JSON.stringify(temp));
 }
