@@ -16,7 +16,9 @@ var allStoredScores = scoresArrayStringParsed[0]
 console.log(allStoredScores);
 
 // ! Work out how to sort scores in ascending order - tricky with numbers but it's not even doing it alphabetically either at the moment.
-allStoredScoresDescending = allStoredScores.sort(function(a, b){return b-a});
+allStoredScoresDescending = allStoredScores.sort(function(a, b){
+    return b.userScore - a.userScore
+});
 console.log(allStoredScoresDescending);
 
 
