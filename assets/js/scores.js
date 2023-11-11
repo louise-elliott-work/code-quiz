@@ -1,22 +1,40 @@
 // * Separate js file for scores to be saved in local storage.
 
-scoresArray = JSON.parse(localStorage.getItem("scoresArray"));
+// Create array of user scores.
+var scoresArray = [];
 
-// Store users' initials and final scores as arrays of objects.
-console.log("type of scoresArray = " + typeof(scoresArray));
+// Retrieve new user entry from local storage.
+var userEntry = JSON.parse(localStorage.getItem("userEntry"));
+
+// ! Work out why userEntry is being overwritten each time so the array only ever holds one userEntry.
+// Add new user entry to user scores array.
+scoresArray.push(userEntry);
+
 console.log("scoresArray = " + scoresArray);
-console.log("userEntry = " + userEntry);
+console.log("scoresArray.length = " + scoresArray.length);
+console.log("scoresArray entries = " + Object.entries(scoresArray));
 
-// Add these two values to the ol #highscores, with the highest finalScore always showing at the top.
-var ol = document.querySelector("#highscores");
-var li = document.createElement('li');
-var text = document.createTextNode(scoresArray);
-li.appendChild(text);
-ol.appendChild(li);
+// Function to run through scores array and display items as list elements in an ordered list.
+// var scoresTable = document.querySelector("#highscores");
+// function displayScores () {
+    // userEntry = JSON.stringify(userEntry);
+    // userInitials = userEntry.userInitials;
+    // console.log(userInitials);
+    // for (var i = 0; i < scoresArray.length; i++) {
+        // var newListElement = document.createElement('li');
+        // newListElement.textContent = (userEntry);
+        // scoresTable.appendChild(newListElement);
+    // }
 
-// On clicking 'Clear Highscores', clear information from local storage.
+
+// }
+
+// displayScores();
+
+// On clicking 'Clear Highscores', clear information from local storage and reload blank page scoreboard.
 var clear = document.getElementById('clear');
 clear.addEventListener('click', clearScores);
 function clearScores () {
     localStorage.clear();
+    location.reload();
 }

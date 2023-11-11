@@ -93,6 +93,7 @@ function runQuiz () {
         console.log("correctAnswer = " + correctAnswer);
 
         if (userAnswer === correctAnswer) {
+            // TODO check whether the feedback message should only display for a few seconds.
             answerMessage.textContent = "Correct!";
             answerMessage.classList.remove("hide");
             // TODO check how to play audio. answerAudio.play(assets/sfx/correct.wav)
@@ -100,6 +101,7 @@ function runQuiz () {
         }
         else {
             timerCount = timerCount-10;
+            // TODO check whether the feedback message should only display for a few seconds.
             answerMessage.textContent = "Incorrect!";
             answerMessage.classList.remove("hide");
             // TODO check how to play audio. answerAudio.play(assets/sfx/incorrect.wav)
@@ -124,12 +126,11 @@ function endQuiz() {
 var submit = document.getElementById('submit');
 submit.addEventListener('click', saveUserEntry);
 function saveUserEntry () {;
-    var userInitials = document.getElementById("initials")
+    var userInitials = document.getElementById("initials").value;
     var userEntry = {
         userInitials: userInitials,
         userScore: userScore
     };
-    var scoresArray = JSON.parse(localStorage.getItem("scoresArray")) || [];
-    scoresArray.push(userEntry);
-    localStorage.setItem("userEntry", JSON.stringify(scoresArray));
+    // Add new user entry to local storage.
+    localStorage.setItem("userEntry", JSON.stringify(userEntry));
 }
