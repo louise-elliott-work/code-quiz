@@ -86,34 +86,49 @@ function runQuiz () {
     
     getAnswer();
 
-    // * Check user answer against correct answer question
-    function checkAnswer() {
+// * Check user answer against correct answer question
+function checkAnswer() {
 
-        console.log("userAnswer = " + userAnswer);
-        console.log("correctAnswer = " + correctAnswer);
-
-        if (userAnswer === correctAnswer) {
-            // TODO check whether the feedback message should only display for a few seconds.
-            answerMessage.textContent = "Correct!";
-            answerMessage.classList.remove("hide");
-            // TODO check how to play audio. answerAudio.play(assets/sfx/correct.wav)
-            userScore = userScore+1;
-        }
-        else {
-            timerCount = timerCount-10;
-            // TODO check whether the feedback message should only display for a few seconds.
-            answerMessage.textContent = "Incorrect!";
-            answerMessage.classList.remove("hide");
-            // TODO check how to play audio. answerAudio.play(assets/sfx/incorrect.wav)
-        }
-
-        console.log("userScore = "+ userScore);
+    // Display feedback message for 3 seconds. Add point for correct answer. Deduct 10 seconds for incorrect answer.
+    if (userAnswer === correctAnswer) {
+        // TODO check whether the feedback message should only display for a few seconds.
+        answerMessage.textContent = "Correct!";
+        answerMessage.classList.remove("hide");
+        setTimeout(function() {
+            answerMessage.classList.add("hide");
+        }, 3000);
+        // TODO check how to play audio. answerAudio.play(assets/sfx/correct.wav)
+        userScore = userScore+1;
     }
-
-    // Start quiz by displaying the first question.
-    displayQuestion()
-    
+    else {
+        timerCount = timerCount-10;
+        // TODO check whether the feedback message should only display for a few seconds.
+        answerMessage.textContent = "Incorrect!";
+        answerMessage.classList.remove("hide");
+        setTimeout(function() {
+            answerMessage.classList.add("hide");
+        }, 3000);
+        // TODO check how to play audio. answerAudio.play(assets/sfx/incorrect.wav)
+    }
+    console.log("userScore = "+ userScore);
 }
+
+// Move to the next question after a delay (for displaying the feedback message)
+
+ // Hide the feedback message
+ // Delay for 1 second before moving to the next question
+
+// Start quiz by displaying the first question.
+displayQuestion()
+
+}
+
+
+
+
+
+
+
 
 function endQuiz() {
     var endScreen = document.getElementById('end-screen');
