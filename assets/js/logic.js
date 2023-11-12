@@ -33,7 +33,6 @@ function startTimer () {
         if(timerCount < 0) {
             clearInterval(timer);
             endQuiz();
-            // TODO #end-screen (message display score and give user ability to save initials and score)
         }
     }, 1000);
     runQuiz();
@@ -115,7 +114,6 @@ function checkAnswer() {
         playAudio();
         timerCount = timerCount-10;
     }
-    console.log("userScore = "+ userScore);
 }
 
 // Move to the next question after a delay (for displaying the feedback message)
