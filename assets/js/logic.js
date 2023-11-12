@@ -13,7 +13,6 @@ var questions = document.getElementById('questions');
 var questionText = document.getElementById('question-title');
 
 var answerMessage = document.getElementById('feedback');
-var answerAudio;
 
 var answerOptions = document.getElementsByClassName("button");
 
@@ -91,24 +90,30 @@ function checkAnswer() {
 
     // Display feedback message for 3 seconds. Add point for correct answer. Deduct 10 seconds for incorrect answer.
     if (userAnswer === correctAnswer) {
-        // TODO check whether the feedback message should only display for a few seconds.
         answerMessage.textContent = "Correct!";
         answerMessage.classList.remove("hide");
         setTimeout(function() {
             answerMessage.classList.add("hide");
         }, 3000);
-        // TODO check how to play audio. answerAudio.play(assets/sfx/correct.wav)
+        var audioCorrect = document.getElementById("audioCorrect");
+        function playAudio() {
+            audioCorrect.play();
+        }
+        playAudio();
         userScore = userScore+1;
     }
     else {
-        timerCount = timerCount-10;
-        // TODO check whether the feedback message should only display for a few seconds.
         answerMessage.textContent = "Incorrect!";
         answerMessage.classList.remove("hide");
         setTimeout(function() {
             answerMessage.classList.add("hide");
         }, 3000);
-        // TODO check how to play audio. answerAudio.play(assets/sfx/incorrect.wav)
+        var audioIncorrect = document.getElementById("audioIncorrect");
+        function playAudio() {
+            audioIncorrect.play();
+        }
+        playAudio();
+        timerCount = timerCount-10;
     }
     console.log("userScore = "+ userScore);
 }
@@ -122,13 +127,6 @@ function checkAnswer() {
 displayQuestion()
 
 }
-
-
-
-
-
-
-
 
 function endQuiz() {
     var endScreen = document.getElementById('end-screen');
