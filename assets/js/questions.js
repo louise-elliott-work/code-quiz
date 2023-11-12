@@ -1,6 +1,6 @@
-// * Separate js file for questions to facilitate changes and additions.
+// * Separate js file for questions to facilitate changes and additions
 
-// Array of questions here to facilitate references and extension. Add text at the end.
+// * Array of questions here to facilitate references and extension
 var questionsArray = [
     [1, "Which of these is the world's most popular programming language?"],
     [2, "Which of these HTML elements would contain the JavaScript tag?"],
@@ -9,7 +9,7 @@ var questionsArray = [
     [5, "Why is it worth learning JavaScript?"],
 ];
 
-// Array of answers here to facilitate references and extension. Add text at the end.
+// * Array of answers here to facilitate references and extension
 var answerOptionsArray = [
     [1, ["C++"], ["JavaScript"], ["Python"], ["Java"]],
     [2, ["HTML"], ["js"], ["JavaScript"], ["script"]],
@@ -18,7 +18,7 @@ var answerOptionsArray = [
     [5, ["It is an extremely versatile language."], ["It is a requirement for most programming jobs."], ["There are many shortcuts you can use, once you have mastered vanilla JavaScript."], ["All of the above"]],
 ];
 
-// Array of correct answers here reference in if statement below.
+// * Array of correct answers here to check against user answers
 var correctAnswersArray = [
     [1, "B"],
     [2, "D"],
