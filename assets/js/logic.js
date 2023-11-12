@@ -116,11 +116,6 @@ function checkAnswer() {
     }
 }
 
-// Move to the next question after a delay (for displaying the feedback message)
-
- // Hide the feedback message
- // Delay for 1 second before moving to the next question
-
 // Start quiz by displaying the first question.
 displayQuestion()
 
