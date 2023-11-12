@@ -15,12 +15,12 @@
     <div class="timer">Time: <span id="time">0</span></div>
 
     <div class="wrapper">
+
       <div id="start-screen" class="start">
         <h1>Coding Quiz Challenge</h1>
         <p>
-          Try to answer the following code-related questions within the time
-          limit. Keep in mind that incorrect answers will penalize your
-          score/time by ten seconds!
+          Answer the following code-related questions within the time
+          limit. <br><br> You will start with 75 seconds. <br><br> Any incorrect answers will result in a 10 second time deduction.
         </p>
         <button id="start">Start Quiz</button>
       </div>
@@ -35,6 +35,8 @@
         </div>
       </div>
 
+      <div id="feedback" class="feedback hide"></div>
+
       <div id="end-screen" class="hide">
         <h2>All done!</h2>
         <p>Your final score is <span id="final-score"></span>.</p>
@@ -45,7 +47,7 @@
       </div>
       <audio id="audioCorrect" src="assets/sfx/correct.wav"></audio>
       <audio id="audioIncorrect" src="assets/sfx/incorrect.wav"></audio>
-      <div id="feedback" class="feedback hide"></div>
+
     </div>
 
     <script src="./assets/js/questions.js"></script>

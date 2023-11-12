@@ -5,7 +5,7 @@ var questionsArray = [
     [1, "Which of these is the world's most popular programming language?"],
     [2, "Which of these HTML elements would contain the JavaScript tag?"],
     [3, "Which of these shows the correct syntax to create a function in JavaScript?"],
-    [4, "Which of these shows the correct structure for a for loop?"],
+    [4, "Which of these shows the correct structure of a 'for loop' in JavaScript?"],
     [5, "Why is it worth learning JavaScript?"],
 ];
 
